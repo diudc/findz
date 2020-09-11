@@ -1,0 +1,260 @@
+@font-face {font-family: "Proxima Nova A"; src: url("../fonts/Proxima-Nova.eot"); src: url("../fonts/Proxima-Nova.eot") format("embedded-opentype"), url("../fonts/Proxima-Nova.woff2") format("woff2"), url("../fonts/Proxima-Nova.woff") format("woff"), url("../fonts/Proxima-Nova.ttf") format("truetype"), url("../fonts/Proxima-Nova.svg") format("svg"); 
+}
+
+body {
+  /* font-family: 'Poppins', sans-serif !important; */
+  font-family: "Proxima Nova A";
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+  background-color: #eeeef2;
+}
+
+
+/* Navbar Style */
+
+.bg-primary{
+  /* background-color: #60a3bc !important; */
+  /* background-color: #2bcbba !important; */
+  background-color: #63cdda !important;
+  padding: 0% !important;
+}
+
+nav .container-fluid{
+  margin-left: 3% !important;
+}
+
+nav .navbar-brand{
+  font-size: 1.5em;
+}
+
+nav [class*=btn-outline-] {
+  border-width: 0px;
+}
+
+nav .btn-outline-info {
+  color: #525f7f;
+  text-transform: none;
+  font-weight: bold;
+  font-size: .8em;
+}
+
+
+
+nav .nav-link{
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+  font-size: 1.04em !important; 
+  font-family: 'Proxima Nova A' !important;  
+}
+
+
+.navbar-nav .nav-link {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: .25rem;
+}
+
+nav .large-screen, .right-small { 
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  nav .large-screen { display: flex; }
+  nav .small-screen { display: none; }
+}
+
+@media screen and (max-width: 576px) {
+  nav .right-small { display: flex; }
+  nav .right { display: none; }
+}
+  
+.navbar-dark .navbar-nav .nav-link{
+  color: white !important;
+}
+
+.dropdown-menu.show{
+  display: block !important;
+}
+
+nav .col-xl-3 .col-md-5 , .col-sm-3 , .col-3{
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+nav .col-12{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+nav .nav-icon {
+  width: 1.1rem;
+  filter: invert(59%) sepia(7%) saturate(4%) hue-rotate(315deg) brightness(80%) contrast(91%);
+  margin-right: .1rem;
+  vertical-align: middle;
+}
+nav .icon-plus {
+  padding-right: .04rem;
+  width: 10px;
+  height: 10px;
+  vertical-align: 0 !important;
+  
+}
+.navbar-nav .dropdown-item{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+
+
+/* Sign In & Sign Up */
+
+#signin-form .alert, #signup-form .alert{
+  padding: .5rem 1rem ;
+}
+
+#signup-form .col-6{
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+/* Catagory Page Card Body */
+
+#catagory-box .card{
+  background-color: #fff;
+  border: 1px solid #d9d9e0;
+  border-radius: 3px;
+}
+
+#catagory-box .card-body{
+  padding: 1rem ;
+}
+
+#catagory-box .card-title {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+
+/* Tutorial Page Card Body */
+#tutorial-box .card{
+  background-color: #fff;
+  border: 0;
+  border-radius: 1px;
+}
+
+#tutorial-box .card-title {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+
+/* Tutorial Page Card Body */
+#root-box .card{
+  background-color: #fff;
+  border: 0;
+  border-radius: 1px;
+}
+#root-box .card-title {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+
+
+/*--------------------------------------------------------------
+# 404 not found
+--------------------------------------------------------------*/
+
+#notfound {
+  position: relative;
+  height: 100vh;
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 520px;
+  width: 100%;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  position: relative;
+  height: 240px;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 252px;
+  font-weight: 900;
+  margin: 0px;
+  color: #262626;
+  text-transform: uppercase;
+  letter-spacing: -40px;
+  margin-left: -20px;
+}
+
+.notfound .notfound-404 h1>span {
+  text-shadow: -8px 0px 0px #fff;
+}
+
+.notfound .notfound-404 h3 {
+  font-family: 'Cabin', sans-serif;
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #262626;
+  margin: 0px;
+  letter-spacing: 3px;
+  padding-left: 6px;
+}
+
+.notfound h2 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #000;
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 767px) {
+  .notfound .notfound-404 {
+    height: 200px;
+  }
+  .notfound .notfound-404 h1 {
+    font-size: 200px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .notfound .notfound-404 {
+    height: 162px;
+  }
+  .notfound .notfound-404 h1 {
+    font-size: 162px;
+    height: 150px;
+    line-height: 162px;
+  }
+  .notfound h2 {
+    font-size: 16px;
+  }
+}
