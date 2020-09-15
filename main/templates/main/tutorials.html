@@ -28,13 +28,13 @@
                         <div class="my-3">
                             <h6 style="font-size: .9em;">Type of course</h6>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" id="free" type="checkbox">
+                                <input class="custom-control-input" name="free" value="free" id="free" type="checkbox">
                                 <label class="custom-control-label" for="free">
                       <span>Free</span>
                     </label>
                             </div>
                             <div class="custom-control custom-checkbox mb-3">
-                                <input class="custom-control-input" id="paid" type="checkbox">
+                                <input class="custom-control-input" name="paid" value="paid" id="paid" type="checkbox">
                                 <label class="custom-control-label" for="paid">
                       <span>Paid</span>
                     </label>
@@ -42,29 +42,33 @@
                         </div>
                         <hr class="m--1">
                         <div class="my-3">
-                            <h6 style="font-size: .9em;">Subcategory</h6>
+                            <h6 style="font-size: .9em;">Medium</h6>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" id="free1" type="checkbox">
-                                <label class="custom-control-label" for="free1">
-                      <span>Free</span>
+                                <input class="custom-control-input" name="video" value="video" id="video" type="checkbox">
+                                <label class="custom-control-label" for="video">
+                      <span>Video</span>
                     </label>
                             </div>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" id="paid1" type="checkbox">
-                                <label class="custom-control-label" for="paid1">
-                      <span>Paid</span>
+                                <input class="custom-control-input" name="video" value="blog" id="blog" type="checkbox">
+                                <label class="custom-control-label" for="blog">
+                      <span>Blog</span>
+                    </label>
+                            </div>
+                        </div>
+                        <hr class="m--1">
+                        <div class="my-3">
+                            <h6 style="font-size: .9em;">Level</h6>
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input class="custom-control-input" name="beginner" value="beginner" id="beginner" type="checkbox">
+                                <label class="custom-control-label" for="beginner">
+                      <span>Beginner</span>
                     </label>
                             </div>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" id="free2" type="checkbox">
-                                <label class="custom-control-label" for="free2">
-                      <span>Free</span>
-                    </label>
-                            </div>
-                            <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" id="paid2" type="checkbox">
-                                <label class="custom-control-label" for="paid2">
-                      <span>Paid</span>
+                                <input class="custom-control-input" name="advanced" value="advanced" id="advanced" type="checkbox">
+                                <label class="custom-control-label" for="advanced">
+                      <span>Advanced</span>
                     </label>
                             </div>
                         </div>
@@ -97,10 +101,18 @@
     </div>
 </div>
 {% endblock %} {% block scripts %}
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
-    $(document).ready(function() {
+    let selectedItems = []
 
-
+    $('input').on('change', function() {
+      let value = $(this).attr('value')
+        position = selectedItems.indexOf(value)
+      if(~position)
+        selectedItems.splice(position, 1)
+      else
+        selectedItems.push(value)
+      console.log(selectedItems)
     });
 </script>
 {% endblock %}
