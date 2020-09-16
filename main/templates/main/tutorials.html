@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %} {% load static %} {% block meta %}
 <title>{{ sub_category.title}} | FindZ</title>
-{% endblock %} {% block body %} {% include 'main/partials/navbar.html' %}
+{% endblock %}
+ {% block body %} {% include 'main/partials/navbar.html' %}
 <div class="wrapper py-5">
     <div class="container-fluid card mt--5">
         <div class="card-body d-flex flex-row mx-md-6 mx--3">
@@ -22,19 +23,19 @@
                             <div>
                                 <h6>Filters</h6>
                             </div>
-                            <div class="ml-auto"><small class="text-red" style="font-size: .6em; font-weight: 600;">Clear all filters</small></div>
+                            <div class="ml-auto"><small id="clear-filter" class="text-red" style="font-size: .6em; font-weight: 600; cursor: pointer">Clear all filters</small></div>
                         </div>
                         <hr class="m--1">
                         <div class="my-3">
                             <h6 style="font-size: .9em;">Type of course</h6>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" name="free" value="free" id="free" type="checkbox">
+                                <input class="custom-control-input pricing"  name="free" value="free" id="free" type="checkbox">
                                 <label class="custom-control-label" for="free">
                       <span>Free</span>
                     </label>
                             </div>
                             <div class="custom-control custom-checkbox mb-3">
-                                <input class="custom-control-input" name="paid" value="paid" id="paid" type="checkbox">
+                                <input class="custom-control-input pricing"  name="paid" value="paid" id="paid" type="checkbox">
                                 <label class="custom-control-label" for="paid">
                       <span>Paid</span>
                     </label>
@@ -44,13 +45,13 @@
                         <div class="my-3">
                             <h6 style="font-size: .9em;">Medium</h6>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" name="video" value="video" id="video" type="checkbox">
+                                <input class="custom-control-input medium" name="video" value="video" id="video" type="checkbox">
                                 <label class="custom-control-label" for="video">
                       <span>Video</span>
                     </label>
                             </div>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" name="video" value="blog" id="blog" type="checkbox">
+                                <input class="custom-control-input medium" name="video" value="blog" id="blog" type="checkbox">
                                 <label class="custom-control-label" for="blog">
                       <span>Blog</span>
                     </label>
@@ -60,13 +61,13 @@
                         <div class="my-3">
                             <h6 style="font-size: .9em;">Level</h6>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" name="beginner" value="beginner" id="beginner" type="checkbox">
+                                <input class="custom-control-input level" name="beginner" value="beginner" id="beginner" type="checkbox">
                                 <label class="custom-control-label" for="beginner">
                       <span>Beginner</span>
                     </label>
                             </div>
                             <div class="custom-control custom-checkbox mb-1">
-                                <input class="custom-control-input" name="advanced" value="advanced" id="advanced" type="checkbox">
+                                <input class="custom-control-input level" name="advanced" value="advanced" id="advanced" type="checkbox">
                                 <label class="custom-control-label" for="advanced">
                       <span>Advanced</span>
                     </label>
@@ -76,26 +77,28 @@
                 </div>
             </div>
             <div class="col-lg-9 col-11">
-                {% for tutorial in tutorials %}
-                <div class="card my-3">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="mr-2"><img style="display: block; object-fit: cover;" src="{% get_media_prefix %}{{ tutorial.avatar }}" alt="..." class="avatar avatar-lg rounded"></div>
-                            <div class="align-self-center">
-                                <h6 class="card-title mb-2">{{ tutorial.title }} </h6>
-                                <small style="font-size: .6em;">Added by <b>{{ tutorial.author }}</b> </small>
-                            </div>
-                            <div class="ml-auto align-self-center mr-2">
-                                <h6 class="heading mt-2 text-green"><b> {{ tutorial.type }} </b></h6>
-                            </div>
-                            <div class="align-self-center">
-                                <div> <a href="{{ tutorial.url }}" target="_blank" role="button" class="btn btn-sm btn-primary mb-2 px-3" style="font-size: .6em;">Go to Course</a></div>
-                                <div> <a href="" role="button" class="btn btn-sm btn-outline-primary px-4" style="font-size: .6em;">See Details</a></div>
+                <div id="tutorials-wrapper">
+                    {% for tutorial in tutorials %}
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mr-2"><img style="display: block; object-fit: cover;" src="{% get_media_prefix %}{{ tutorial.avatar }}" alt="..." class="avatar avatar-lg rounded"></div>
+                                <div class="align-self-center">
+                                    <h6 class="card-title mb-2">{{ tutorial.title }} </h6>
+                                    <small style="font-size: .6em;">Added by <b>{{ tutorial.author }}</b> </small>
+                                </div>
+                                <div class="ml-auto align-self-center mr-2">
+                                    <h6 class="heading mt-2 text-green"><b> {{ tutorial.type }} </b></h6>
+                                </div>
+                                <div class="align-self-center">
+                                    <div> <a href="{{ tutorial.url }}" target="_blank" role="button" class="btn btn-sm btn-primary mb-2 px-3" style="font-size: .6em;">Go to Course</a></div>
+                                    <div> <a href="" role="button" class="btn btn-sm btn-outline-primary px-4" style="font-size: .6em;">See Details</a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
@@ -103,16 +106,114 @@
 {% endblock %} {% block scripts %}
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
-    let selectedItems = []
+    let state = {
+        pricing: null,
+        medium: [],
+        level: [],
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+    }
 
-    $('input').on('change', function() {
-      let value = $(this).attr('value')
-        position = selectedItems.indexOf(value)
-      if(~position)
-        selectedItems.splice(position, 1)
-      else
-        selectedItems.push(value)
-      console.log(selectedItems)
+    $('.pricing').on('change', function() {
+        if (state.pricing) {
+            state.pricing = null
+        } else {
+            state.pricing = $(this).attr('value')
+        }
+
+        if($(this).is(':checked')) {
+            $('.pricing').attr('disabled', true)
+            $(this).attr('disabled', false)
+        } else {
+            $('.pricing').attr('disabled', false)
+        }
+
+        console.log(state)
+        sendRequest()
+    })
+    
+
+    $('.medium').on('change', function() {
+        let value = $(this).attr('value')
+        let position = state.medium.indexOf(value)
+
+        if(position == -1) {
+            state.medium.push(value)
+        }
+        else {
+            state.medium.splice(position, 1)
+        }
+        console.log(state)
+        sendRequest()
+    })
+
+    $('#clear-filter').on('click', function() {
+        state = {
+            pricing: null,
+            medium: [],
+            level: [],
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+        }
+        sendRequest()
+    })
+
+    $('.level').on('change', function() {
+        let value = $(this).attr('value')
+        let position = state.level.indexOf(value)
+
+        if(position == -1) {
+            state.level.push(value)
+        }
+        else {
+            state.level.splice(position, 1)
+        }
+        console.log(state)
+        sendRequest()
     });
+
+    function sendRequest() {
+        console.log('sending request')
+
+        $.ajax({
+            url: '{% url "sub-category" category_slug sub_category.slug  %}',
+            type: 'POST',
+            data: state,
+        }).done(function(res) {
+            tutorials = JSON.parse(res)
+            console.log(tutorials)
+
+            $('#tutorials-wrapper').empty()
+
+            if(tutorials.length !== 0) {
+                tutorials.map(function(tutorial) {
+                    let template = `
+                        <div class="card my-3">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mr-2"><img style="display: block; object-fit: cover;" src="{% get_media_prefix %}{{ tutorial.avatar }}" alt="..." class="avatar avatar-lg rounded"></div>
+                                    <div class="align-self-center">
+                                        <h6 class="card-title mb-2">${tutorial.fields.title}</h6>
+                                        <small style="font-size: .6em;">Added by <b>{{ tutorial.author }}</b> </small>
+                                    </div>
+                                    <div class="ml-auto align-self-center mr-2">
+                                        <h6 class="heading mt-2 text-green"><b> {{ tutorial.type }} </b></h6>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <div> <a href="{{ tutorial.url }}" target="_blank" role="button" class="btn btn-sm btn-primary mb-2 px-3" style="font-size: .6em;">Go to Course</a></div>
+                                        <div> <a href="" role="button" class="btn btn-sm btn-outline-primary px-4" style="font-size: .6em;">See Details</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                    $('#tutorials-wrapper').append(template)
+                })
+            } else {
+                let notFoundTemplate = '<h1>No Tutorials Found with This Filter</h1>'
+                $('#tutorials-wrapper').append(notFoundTemplate)
+            }
+        }).fail(function () {
+            console.log('errrrrrrrrrrrrrrrrrrrrrrrr')
+        })
+    }
 </script>
 {% endblock %}
