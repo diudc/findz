@@ -64,6 +64,9 @@ def sub_category(request, category_slug, sub_category_slug):
         serialized_tutorials = serializers.serialize('json', tutorials, ensure_ascii=False)
         return JsonResponse(serialized_tutorials, safe=False)
 
+def submit_tutorial(request):
+    return render(request,'main/submit_tutorial.html')
+    
 
 def not_found(request):
     return render(request, 'main/404.html')

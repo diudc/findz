@@ -6,10 +6,11 @@
         <!-- Sign Up/In -->
         <div class="align-self-center ml-auto">
             <ul class="navbar-nav right mr-3">
-                <li class="nav-item align-self-center">
-                    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-form"><span><img class="icon-plus" src={% static 'main/img/icons/add.svg' %} alt="Design"></span> Submit a tutorial</button>
-                </li>
                 {% if user.is_authenticated %}
+                <li class="nav-item align-self-center">
+                    <a href="{% url 'submit' %}"><button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-form"><span><img class="icon-plus" src={% static 'main/img/icons/add.svg' %} alt="Design"></span> Submit a tutorial</button></a>
+                </li>
+               
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
