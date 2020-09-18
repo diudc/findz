@@ -57,3 +57,23 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+def profile(request):
+    profile = Profile.objects.all()
+    context = {
+        'profile' : profile
+    }
+    return render (request, 'main/profile.html', context)
+
+
+def editprofile(request):
+    profile = Profile.objects.all()
+    context = {
+        'profile' : profile
+    }
+    return render (request, 'main/editprofile.html', context)
+
+
+def editpassword(request):
+    return render (request, 'main/editpassword.html')

@@ -20,9 +20,9 @@
             <ul class="navbar-nav right mr-3">
                 {% if user.is_authenticated %}
                 <li class="nav-item align-self-center">
-                    <a href="{% url 'submit' %}"><button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-form"><span><img class="icon-plus" src={% static 'main/img/icons/add.svg' %} alt="Design"></span> Submit a tutorial</button></a> 
+                    <a href="{% url 'submit' %}"><button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-form"><span><img class="icon-plus" src={% static 'main/img/icons/add.svg' %} alt="Design"></span> Submit a tutorial</button></a>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
@@ -38,7 +38,7 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="{% url 'profile' %}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
                         </a>
@@ -103,10 +103,10 @@
     </div>
 </nav>
 
-{% block scripts %}
+<!-- {% block scripts %}
 <script src="{% static 'main/js/core/jquery.min.js' %}"></script>
 <script src="{% static 'main/js/core/popper.min.js' %}"></script>
 <script src="{% static 'main/js/core/bootstrap.min.js' %}"></script>
-<script src="{% static 'main/js/argon-design-system.min.js' %}"></script>
+<script src="{% static 'main/js/argon-design-system.min.js' %}"></script> -->
 
 {% endblock %}
