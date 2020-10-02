@@ -67,6 +67,8 @@ def sub_category(request, category_slug, sub_category_slug):
 def submit_tutorial(request):
     return render(request,'main/submit_tutorial.html')
     
+def guidelines(request):
+    return render(request,'main/guidelines.html')
 
 def not_found(request):
     return render(request, 'main/404.html')

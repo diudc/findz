@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %} {% load static %} {% block meta %}
-<title>Sign Up - Find-Z</title>
+<title>Submission-Find-Z</title>
 {% endblock %} {% block styles %}
 <style type="text/css">
     body {
@@ -176,14 +176,9 @@
                     </form>
                     <div class="submit-modal-footer margintop-lg">
                         <p>Have you read our submission <a target="_blank"
-                                href="https://hackr.io/submission-criteria">guidelines</a>?</p>
+                            href="{% url 'guidelines' %}">guidelines</a>?</p>
                     </div>
                 </div>
-
-
-
-
-
 
             </div>
         </div>
