@@ -23,6 +23,10 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.title
 
+    def value_to_string(self, obj):
+        value = self.value_from_object(obj)
+        return self.get_prep_value(value)
+
 
 class Tutorial(models.Model):
     PRICING = [

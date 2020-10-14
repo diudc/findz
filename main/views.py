@@ -1,10 +1,14 @@
+from urllib.parse import urlparse, parse_qs
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.contrib import messages
 from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.db.models import Q
 from main.models import *
+from main.serializers import SubCategorySerializer, TutorialSerializer
 
 
 def index(request):
@@ -14,6 +18,55 @@ def index(request):
         'categories': all_category
     }
     return render(request, 'main/index.html', context)
+
+
+def search(request):
+    if request.method == 'GET':
+        query = request.GET['q']
+        results = Tutorial.objects.filter(title__icontains=query)
+        context = {
+            'tutorials': results,
+            'query': query.title()
+        }
+        return render(request, 'main/tutorials.html', context)
+
+
+@api_view(('GET',))
+def search_subcategory(request, subcategory_slug):
+    if request.method == 'GET':
+        query = request.GET['q']
+
+        subcategories = SubCategory.objects.filter(category__slug=subcategory_slug).filter(title__icontains=query)
+        subcategory_serializer = SubCategorySerializer(subcategories, many=True)
+        return Response(subcategory_serializer.data)
+
+
+@api_view(('GET',))
+def course_filter(request):
+    if request.method == 'GET':
+        pricing = request.GET['pricing']
+        medium = request.GET.getlist('medium[]')
+        level = request.GET.getlist('level[]')
+        query = request.GET['query']
+
+        if '?q=' in query:
+            parsed_url = urlparse(query)
+            querystring = parse_qs(parsed_url.query)
+            query_word = querystring['q'][0]
+            tutorial_qs = Tutorial.objects.filter(title__icontains=query_word)
+        else:
+            parsed_url = urlparse(query)
+            subcategory_slug = parsed_url.path.split('/')[-2]
+            tutorial_qs = Tutorial.objects.filter(sub_category__slug=subcategory_slug)
+
+        pricing = ['free', 'paid'] if not pricing else [pricing]
+        medium = ['blog', 'video', 'book'] if not medium else medium
+        level = ['beginner', 'intermediate', 'advanced'] if not level else level
+
+        tutorials = tutorial_qs.filter(Q(pricing__in=pricing) & Q(medium__in=medium) & Q(level__in=level))
+
+        tutorial_serializer = TutorialSerializer(tutorials, many=True)
+        return Response(tutorial_serializer.data)
 
 
 def category(request, category_slug):
@@ -50,6 +103,7 @@ def sub_category(request, category_slug, sub_category_slug):
             'category_slug': category_slug
         }
         return render(request, 'main/tutorials.html', context)
+
     elif request.method == 'POST':
         pricing = request.POST['pricing']
         medium = request.POST.getlist('medium[]')

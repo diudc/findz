@@ -5,13 +5,13 @@
         <a class="navbar-brand mr-auto" href="{% url 'home' %}"><i class="fas fa-greater-than-equal"></i> <b>Find-Z</b></a>
         <!-- Search -->
 
-        <form class="form-inline col-3">
+        <form method="GET" action={% url 'search' %} class="form-inline col-3" id="inside-search">
             <div class="col-12">
                 <div class="input-group input-group-alternative input-group-sm">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="Search" type="text">
+                    <input id="search-q" name="q" class="form-control form-control-alternative" placeholder="Search" type="text">
                 </div>
             </div>
         </form>

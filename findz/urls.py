@@ -8,6 +8,9 @@ from account import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('search/', main_views.search, name="search"),
+    path('search/<slug:subcategory_slug>/', main_views.search_subcategory, name="search-subcategory"),
+    path('course-filter/', main_views.course_filter, name='course-filter'),
     path('register/', account_views.register, name='register'),
     path('login/', account_views.login, name='login'),
     path('logout/', account_views.logout, name='logout'),
