@@ -5,23 +5,24 @@
         <a class="navbar-brand mr-auto" href="{% url 'home' %}"><i class="fas fa-greater-than-equal"></i> <b>Find-Z</b></a>
         <!-- Search -->
 
-        <form class="form-inline col-3">
+        <form method="GET" action={% url 'search' %} class="form-inline col-3" id="inside-search">
             <div class="col-12">
                 <div class="input-group input-group-alternative input-group-sm">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                     </div>
-                    <input class="form-control form-control-alternative" placeholder="Search" type="text">
+                    <input id="search-q" name="q" class="form-control form-control-alternative" placeholder="Search" type="text">
                 </div>
             </div>
         </form>
         <!-- Sign Up/In -->
         <div class="align-self-center">
             <ul class="navbar-nav right mr-3">
-                <li class="nav-item align-self-center">
-                    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-form"><span><img class="icon-plus" src={% static 'main/img/icons/add.svg' %} alt="Design"></span> Submit a tutorial</button>
-                </li>
                 {% if user.is_authenticated %}
+                <li class="nav-item align-self-center">
+                    <a href="{% url 'submit' %}"><button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-form"><span><img class="icon-plus" src={% static 'main/img/icons/add.svg' %} alt="Design"></span> Submit a tutorial</button></a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
@@ -37,7 +38,7 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="{% url 'profile' %}" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
                             <span>My profile</span>
                         </a>
@@ -102,10 +103,10 @@
     </div>
 </nav>
 
-{% block scripts %}
+<!-- {% block scripts %}
 <script src="{% static 'main/js/core/jquery.min.js' %}"></script>
 <script src="{% static 'main/js/core/popper.min.js' %}"></script>
 <script src="{% static 'main/js/core/bootstrap.min.js' %}"></script>
-<script src="{% static 'main/js/argon-design-system.min.js' %}"></script>
+<script src="{% static 'main/js/argon-design-system.min.js' %}"></script> -->
 
 {% endblock %}

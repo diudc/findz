@@ -23,11 +23,27 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.title
 
+    def value_to_string(self, obj):
+        value = self.value_from_object(obj)
+        return self.get_prep_value(value)
+
 
 class Tutorial(models.Model):
-    TUTORIAL_TYPE = [
+    PRICING = [
         ('free', 'Free'),
         ('paid', 'Paid')
+    ]
+
+    MEDIUM = [
+        ('video', 'Video'),
+        ('blog', 'Blog'),
+        ('book', 'Book')
+    ]
+
+    LEVEL = [
+        ('beginner', 'Beginner'),
+        ('intermediate', 'Intermediate'),
+        ('advanced', 'Advanced')
     ]
 
     title = models.CharField(max_length=250)
@@ -36,9 +52,11 @@ class Tutorial(models.Model):
     short_desc = models.TextField()
     description = RichTextField()
     url = models.CharField(max_length=250)
-    tutorial_type = models.CharField(max_length=50, choices=TUTORIAL_TYPE)
     total_views = models.IntegerField(default=0)
     price = models.FloatField()
+    pricing = models.CharField(max_length=50, choices=PRICING)
+    medium = models.CharField(max_length=50, choices=MEDIUM)
+    level = models.CharField(max_length=50, choices=LEVEL)
     is_active = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

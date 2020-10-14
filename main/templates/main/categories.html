@@ -37,8 +37,47 @@
 {% endblock %} {% block scripts %}
 <script>
     $(document).ready(function() {
-
-
+        $('#search-q').on('keyup', function(e) {
+            e.preventDefault()
+            let searchQuery = $('#search-q').val()
+            
+            $.ajax({
+                url: '/search{{ request.path }}',
+                type: 'GET',
+                data: {
+                    q: searchQuery
+                },
+            }).done(function(res) {
+                let subCategories = res
+                console.log(subCategories)
+                $("#catagory-box").empty()
+                
+                if(subCategories.length !== 0) {
+                    subCategories.map(function(subCategory) {
+                        var subCategoryTemplate = `
+                            <div class="col-lg-4">
+                                <div class="card my-3">
+                                    <div class="card-body">
+                                        <a class="card-link" href=${subCategory.slug}>
+                                            <div class="d-flex">
+                                                <div class="mr-2"><img style="display: block; object-fit: cover;" src="{% get_media_prefix %}{{ sub_category.avatar }}" alt="..." class="avatar avatar-xs rounded"></div>
+                                                <h6 class="card-title">${subCategory.title}<br>
+                                                    <small>${subCategory.course_count} online courses</small>
+                                                </h6>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        $("#catagory-box").append(subCategoryTemplate)
+                    })
+                } else {
+                    let notFoundTemplate = `<h2>No Results Found</h2>`
+                    $("#catagory-box").append(notFoundTemplate)
+                }
+            })
+        })
     });
 </script>
 {% endblock %}
