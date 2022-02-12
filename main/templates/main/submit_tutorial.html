@@ -5,8 +5,7 @@
     body {
         background-color: #DADADA;
     }
-
-
+    
     p .text-capitalize {
         width: 163px;
         height: 20px;
@@ -17,12 +16,11 @@
         text-align: left;
         text-transform: capitalize;
     }
-
+    
     @media screen and (max-width: 769px) {
         .media {
             width: 100%;
         }
-
     }
 </style>
 {% endblock %} {% block body %} {% include 'main/partials/navbar.html' %}
@@ -52,24 +50,21 @@
                                                     d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z" />
                                             </svg></i></span>
                                 </div>
-                                <input class="form-control" type="text" name="username"
-                                    placeholder="URL of the tutorial">
+                                <input class="form-control" type="text" name="url" placeholder="URL of the tutorial">
                             </div>
                         </div>
 
                         <div class="form-group mb-3">
                             <div class="input-group input-group-merge input-group-alternative">
 
-                                <input class="form-control font "
-                                    placeholder="Tell us more about this 'tutorial/course' (optional)"></input>
+                                <input class="form-control font " name="text" placeholder="Tell us more about this 'tutorial/course' (optional)"></input>
                             </div>
                         </div>
                         <div class="form-group">
-                            <p class="mb-0">Category:</p>
+                            <p class="mb-0">SubCategory:</p>
                             <div class="input-group input-group-merge input-group-alternative">
 
-                                <input class="form-control" type="text" name="password2"
-                                    placeholder="Python, Anguler, React etc..">
+                                <input class="form-control" type="text" name="subcategory" placeholder="Python, Anguler, React etc..">
                             </div>
                         </div>
 
@@ -81,15 +76,13 @@
                             <div class=" col-md-8 control-group radio-checkbox modal-form-sec">
                                 <div class="row">
                                     <div class="custom-control custom-checkbox  mb-1 col-md-3">
-                                        <input class="custom-control-input pricing" name="free" value="free" id="free"
-                                            type="checkbox">
+                                        <input class="custom-control-input pricing" name="free" value="free" id="free" type="checkbox">
                                         <label class="custom-control-label" for="free">
                                             <span>Free</span>
                                         </label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 col-md-3">
-                                        <input class="custom-control-input pricing" name="paid" value="paid" id="paid"
-                                            type="checkbox">
+                                        <input class="custom-control-input pricing" name="paid" value="paid" id="paid" type="checkbox">
                                         <label class="custom-control-label" for="paid">
                                             <span>Paid</span>
                                         </label>
@@ -107,22 +100,19 @@
                             <div class=" col-md-8 control-group radio-checkbox modal-form-sec">
                                 <div class="row">
                                     <div class="custom-control custom-checkbox  mb-1 col-md-3">
-                                        <input class="custom-control-input medium" name="free" value="free" id="Video"
-                                            type="checkbox">
+                                        <input class="custom-control-input medium" name="free" value="free" id="Video" type="checkbox">
                                         <label class="custom-control-label" for="Video">
                                             <span>Video</span>
                                         </label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-2 col-md-3">
-                                        <input class="custom-control-input medium" name="paid" value="paid" id="Blog"
-                                            type="checkbox">
+                                        <input class="custom-control-input medium" name="paid" value="paid" id="Blog" type="checkbox">
                                         <label class="custom-control-label" for="Blog">
                                             <span>Blog</span>
                                         </label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-2 col-md-3">
-                                        <input class="custom-control-input medium" name="paid" value="paid" id="Book"
-                                            type="checkbox">
+                                        <input class="custom-control-input medium" name="paid" value="paid" id="Book" type="checkbox">
                                         <label class="custom-control-label" for="Book">
                                             <span>Book</span>
                                         </label>
@@ -142,22 +132,19 @@
                             <div class=" col-md-8 control-group radio-checkbox modal-form-sec">
                                 <div class="">
                                     <div class="custom-control custom-checkbox  mb-1 col-md-3">
-                                        <input class="custom-control-input level" name="free" value="free" id="Advanced"
-                                            type="checkbox">
+                                        <input class="custom-control-input level" name="free" value="free" id="Advanced" type="checkbox">
                                         <label class="custom-control-label" for="Advanced">
                                             <span>Advanced</span>
                                         </label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-1 col-md-3">
-                                        <input class="custom-control-input level" name="paid" value="paid" id="Beginner"
-                                            type="checkbox">
+                                        <input class="custom-control-input level" name="paid" value="paid" id="Beginner" type="checkbox">
                                         <label class="custom-control-label" for="Beginner">
                                             <span>Beginner</span>
                                         </label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 col-md-3">
-                                        <input class="custom-control-input level" name="paid" value="paid"
-                                            id="Intermediate" type="checkbox">
+                                        <input class="custom-control-input level" name="paid" value="paid" id="Intermediate" type="checkbox">
                                         <label class="custom-control-label" for="Intermediate">
                                             <span>Intermediate</span>
                                         </label>
@@ -167,16 +154,14 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit"
-                                class="btn btn-primary full_width spinning-loader btn-large btn-block">
+                            <button type="submit" class="btn btn-primary full_width spinning-loader btn-large btn-block">
                                 <span class="txt text-capitalize  ">submit</span>
                                 <i class="ion-md-radio-button-off"></i>
                             </button>
                         </div>
                     </form>
                     <div class="submit-modal-footer margintop-lg">
-                        <p>Have you read our submission <a target="_blank"
-                            href="{% url 'guidelines' %}">guidelines</a>?</p>
+                        <p>Have you read our submission <a target="_blank" href="{% url 'guidelines' %}">guidelines</a>?</p>
                     </div>
                 </div>
 
@@ -195,7 +180,7 @@
         csrfmiddlewaretoken: '{{ csrf_token }}',
     }
 
-    $('.pricing').on('change', function () {
+    $('.pricing').on('change', function() {
         if (state.pricing) {
             state.pricing = null
         } else {
@@ -213,7 +198,7 @@
         sendRequest()
     })
 
-    $('.medium').on('change', function () {
+    $('.medium').on('change', function() {
         if (state.medium) {
             state.medium = null
         } else {
@@ -231,14 +216,13 @@
         sendRequest()
     })
 
-    $('.level').on('change', function () {
+    $('.level').on('change', function() {
         let value = $(this).attr('value')
         let position = state.level.indexOf(value)
 
         if (position == -1) {
             state.level.push(value)
-        }
-        else {
+        } else {
             state.level.splice(position, 1)
         }
         console.log(state)
