@@ -40,7 +40,7 @@
         $('#search-q').on('keyup', function(e) {
             e.preventDefault()
             let searchQuery = $('#search-q').val()
-            
+
             $.ajax({
                 url: '/search{{ request.path }}',
                 type: 'GET',
@@ -51,8 +51,8 @@
                 let subCategories = res
                 console.log(subCategories)
                 $("#catagory-box").empty()
-                
-                if(subCategories.length !== 0) {
+
+                if (subCategories.length !== 0) {
                     subCategories.map(function(subCategory) {
                         var subCategoryTemplate = `
                             <div class="col-lg-4">

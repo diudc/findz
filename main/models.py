@@ -50,10 +50,10 @@ class Tutorial(models.Model):
     slug = models.SlugField(max_length=100, blank=True)
     avatar = models.ImageField(upload_to='tutorials', max_length=100)
     short_desc = models.TextField()
-    description = RichTextField()
-    url = models.CharField(max_length=250)
+    description = RichTextField(blank=True)
+    url = models.URLField()
     total_views = models.IntegerField(default=0)
-    price = models.FloatField()
+    # price = models.FloatField(,blank=True)
     pricing = models.CharField(max_length=50, choices=PRICING)
     medium = models.CharField(max_length=50, choices=MEDIUM)
     level = models.CharField(max_length=50, choices=LEVEL)
@@ -73,6 +73,31 @@ class Tutorial(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# class Submission(models.Model):
+#     PRICING = [
+#         ('free', 'Free'),
+#         ('paid', 'Paid')
+#     ]
+
+#     MEDIUM = [
+#         ('video', 'Video'),
+#         ('blog', 'Blog'),
+#         ('book', 'Book')
+#     ]
+
+#     LEVEL = [
+#         ('beginner', 'Beginner'),
+#         ('intermediate', 'Intermediate'),
+#         ('advanced', 'Advanced')
+#     ]
+#     url = models.URLField()
+#     text = models.TextField(max_length=200)
+#     sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+#     pricing = models.CharField(max_length=50, choices=PRICING)
+#     medium = models.CharField(max_length=50, choices=MEDIUM)
+#     level = models.CharField(max_length=50, choices=LEVEL)
 
 
 class Comment(models.Model):
